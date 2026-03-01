@@ -1,0 +1,250 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FixIt Lusaka | Trusted Skilled Workers Directory</title>
+  <meta name="description" content="Find trusted plumbers, electricians, carpenters, and welders in Lusaka. Fast WhatsApp contact and reviewed listings." />
+
+  <meta property="og:title" content="FixIt Lusaka | Skilled Workers Directory" />
+  <meta property="og:description" content="A simple public directory for trusted skilled workers in Lusaka, Zambia." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://example.com" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f7f4ef',
+              100: '#efe6d8',
+              500: '#d08b47',
+              700: '#9b5f2b',
+              900: '#4f3116'
+            },
+            slateWarm: '#2f2a24'
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-brand-50 text-slate-800 antialiased">
+  <header class="sticky top-0 z-50 border-b border-brand-100 bg-white/95 backdrop-blur">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3" aria-label="Main navigation">
+      <a href="#top" class="text-xl font-bold text-brand-900">FixIt Lusaka</a>
+
+      <button id="menuBtn" class="rounded-md border border-brand-100 px-3 py-2 text-sm md:hidden" aria-label="Toggle menu" aria-expanded="false">
+        Menu
+      </button>
+
+      <div id="mobileMenu" class="hidden w-full pt-3 md:block md:w-auto md:pt-0">
+        <ul class="flex flex-col gap-2 text-sm font-medium md:flex-row md:items-center md:gap-6">
+          <li><a href="#top" class="hover:text-brand-700">Home</a></li>
+          <li><a href="#featured" class="hover:text-brand-700">Featured</a></li>
+          <li><a href="#workers" class="hover:text-brand-700">All Workers</a></li>
+          <li><a href="#list-service" class="hover:text-brand-700">List Service</a></li>
+          <li><a href="#contact" class="hover:text-brand-700">Contact</a></li>
+          <li>
+            <a href="#list-service" class="inline-block rounded-md bg-brand-500 px-4 py-2 text-white hover:bg-brand-700">List Your Service</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="mx-auto max-w-7xl px-4 py-16 sm:py-20">
+      <div class="grid items-center gap-10 md:grid-cols-2">
+        <div>
+          <p class="mb-3 inline-flex rounded-full bg-brand-100 px-3 py-1 text-xs font-semibold text-brand-900">Lusaka Phase 1 MVP</p>
+          <h1 class="text-3xl font-extrabold leading-tight text-slateWarm sm:text-4xl">Find Trusted Skilled Workers in Lusaka</h1>
+          <p class="mt-4 max-w-xl text-base text-slate-600 sm:text-lg">Plumbers, electricians, carpenters &amp; welders - fast contact via WhatsApp.</p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="#workers" class="rounded-md bg-brand-500 px-5 py-3 text-sm font-semibold text-white hover:bg-brand-700">Browse Workers</a>
+            <a href="#list-service" class="rounded-md border border-brand-500 px-5 py-3 text-sm font-semibold text-brand-900 hover:bg-brand-100">List Your Service</a>
+          </div>
+        </div>
+        <div class="rounded-2xl border border-brand-100 bg-white p-6 shadow-sm">
+          <h2 class="text-lg font-bold text-slateWarm">How It Works</h2>
+          <ol class="mt-4 space-y-3 text-sm text-slate-700">
+            <li>1. Search by trade, area, or service.</li>
+            <li>2. Contact a worker directly on WhatsApp or call.</li>
+            <li>3. Confirm details before hiring.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section id="search-controls" class="mx-auto max-w-7xl px-4 py-8">
+      <div class="rounded-2xl border border-brand-100 bg-white p-6 shadow-sm">
+        <h2 class="text-xl font-bold text-slateWarm">Search &amp; Filter</h2>
+        <p class="mt-1 text-sm text-slate-600">Filter workers by name, trade, area, or services.</p>
+
+        <div class="mt-4 grid gap-4 lg:grid-cols-12">
+          <div class="lg:col-span-6">
+            <label for="searchInput" class="sr-only">Search workers</label>
+            <input id="searchInput" type="search" placeholder="Search name, trade, area, services..." class="w-full rounded-md border border-slate-300 px-4 py-3 text-sm focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-100" />
+          </div>
+
+          <div class="lg:col-span-3">
+            <label for="areaFilter" class="sr-only">Filter by area</label>
+            <select id="areaFilter" class="w-full rounded-md border border-slate-300 px-4 py-3 text-sm focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-100">
+              <option value="all">All Areas</option>
+            </select>
+          </div>
+
+          <div class="lg:col-span-3">
+            <button id="clearFilters" class="w-full rounded-md border border-brand-500 px-4 py-3 text-sm font-semibold text-brand-900 hover:bg-brand-100">Clear Filters</button>
+          </div>
+        </div>
+
+        <div id="tradeFilters" class="mt-4 flex flex-wrap gap-2" aria-label="Trade filters">
+          <button class="trade-filter rounded-full bg-brand-500 px-4 py-2 text-xs font-semibold text-white" data-trade="all">All</button>
+          <button class="trade-filter rounded-full border border-brand-200 bg-white px-4 py-2 text-xs font-semibold text-slate-700" data-trade="Plumber">Plumber</button>
+          <button class="trade-filter rounded-full border border-brand-200 bg-white px-4 py-2 text-xs font-semibold text-slate-700" data-trade="Electrician">Electrician</button>
+          <button class="trade-filter rounded-full border border-brand-200 bg-white px-4 py-2 text-xs font-semibold text-slate-700" data-trade="Carpenter">Carpenter</button>
+          <button class="trade-filter rounded-full border border-brand-200 bg-white px-4 py-2 text-xs font-semibold text-slate-700" data-trade="Welder">Welder</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="featured" class="mx-auto max-w-7xl px-4 py-10">
+      <div class="mb-5 flex items-center justify-between gap-4">
+        <div>
+          <h2 class="text-2xl font-bold text-slateWarm">Featured Workers</h2>
+          <p class="text-sm text-slate-600">Featured listings support the platform.</p>
+        </div>
+      </div>
+      <div id="featuredWorkers" class="grid gap-4 md:grid-cols-2 lg:grid-cols-3"></div>
+      <p id="featuredEmpty" class="mt-4 hidden text-sm font-medium text-red-700">No featured workers match the current filters.</p>
+    </section>
+
+    <section id="workers" class="mx-auto max-w-7xl px-4 py-10">
+      <div class="mb-5 flex items-center justify-between gap-4">
+        <div>
+          <h2 class="text-2xl font-bold text-slateWarm">All Workers</h2>
+          <p id="workerCount" class="text-sm text-slate-600">Loading workers...</p>
+        </div>
+      </div>
+      <div id="allWorkers" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
+      <p id="allEmpty" class="mt-4 hidden text-sm font-medium text-red-700">No workers found. Try changing filters.</p>
+    </section>
+
+    <section class="mx-auto max-w-7xl px-4 py-10">
+      <div class="rounded-2xl border border-brand-100 bg-white p-6 shadow-sm">
+        <h2 class="text-xl font-bold text-slateWarm">How to stay safe</h2>
+        <ul class="mt-4 list-disc space-y-2 pl-5 text-sm text-slate-700">
+          <li>Confirm identity.</li>
+          <li>Ask for estimate.</li>
+          <li>Meet in public if possible.</li>
+          <li>Use referrals.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="list-service" class="mx-auto max-w-7xl px-4 py-10">
+      <div class="rounded-2xl border border-brand-100 bg-white p-6 shadow-sm">
+        <h2 class="text-2xl font-bold text-slateWarm">List Your Service</h2>
+        <p class="mt-1 text-sm text-slate-600">Listings are reviewed before they appear.</p>
+
+        <!-- Replace Formspree URL below with your own if needed -->
+        <form id="serviceForm" action="https://formspree.io/f/xykdadgl" method="POST" class="mt-6 grid gap-4 md:grid-cols-2">
+          <div>
+            <label for="fullName" class="mb-1 block text-sm font-medium">Full name</label>
+            <input id="fullName" name="full_name" required class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm" />
+          </div>
+          <div>
+            <label for="trade" class="mb-1 block text-sm font-medium">Trade</label>
+            <select id="trade" name="trade" required class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm">
+              <option value="">Select trade</option>
+              <option>Plumber</option>
+              <option>Electrician</option>
+              <option>Carpenter</option>
+              <option>Welder</option>
+            </select>
+          </div>
+          <div>
+            <label for="area" class="mb-1 block text-sm font-medium">Area</label>
+            <input id="area" name="area" required class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm" />
+          </div>
+          <div>
+            <label for="phone" class="mb-1 block text-sm font-medium">Phone</label>
+            <input id="phone" name="phone" required placeholder="097xxxxxxx" class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm" />
+          </div>
+          <div>
+            <label for="whatsapp" class="mb-1 block text-sm font-medium">WhatsApp (international)</label>
+            <input id="whatsapp" name="whatsapp" required placeholder="26097xxxxxxx" class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm" />
+          </div>
+          <div>
+            <label for="services" class="mb-1 block text-sm font-medium">Services offered</label>
+            <input id="services" name="services" required class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm" />
+          </div>
+          <div class="md:col-span-2">
+            <label for="notes" class="mb-1 block text-sm font-medium">Notes (optional)</label>
+            <textarea id="notes" name="notes" rows="4" class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm"></textarea>
+          </div>
+          <div class="md:col-span-2">
+            <button type="submit" class="rounded-md bg-brand-500 px-5 py-3 text-sm font-semibold text-white hover:bg-brand-700">Submit Listing</button>
+          </div>
+        </form>
+
+        <p class="mt-4 text-xs text-slate-500">Submitting this form sends details to admin email for manual review. It does not auto-publish.</p>
+      </div>
+    </section>
+
+    <!--
+      MANUAL APPROVAL WORKFLOW
+      1) Check Formspree submission emails.
+      2) Verify worker by call/WhatsApp.
+      3) Add one new worker object into workers.json.
+      4) Redeploy static files to Netlify.
+    -->
+
+    <section id="contact" class="mx-auto max-w-7xl px-4 py-10">
+      <div class="grid gap-6 rounded-2xl border border-brand-100 bg-white p-6 shadow-sm md:grid-cols-2">
+        <div>
+          <h2 class="text-2xl font-bold text-slateWarm">Contact</h2>
+          <p class="mt-3 text-sm text-slate-700">Lusaka, Zambia</p>
+          <p class="mt-1 text-sm text-slate-700">Admin Contact: 0773003518</p>
+          <div class="mt-4 flex flex-wrap gap-3 text-sm">
+            <a href="#" class="rounded-md border border-slate-300 px-3 py-2 hover:bg-slate-100">Facebook</a>
+            <a href="#" class="rounded-md border border-slate-300 px-3 py-2 hover:bg-slate-100">Instagram</a>
+            <a href="https://wa.me/260773003518?text=Hi%20FixIt%20Lusaka,%20I%20am%20looking%20for%20a%20skilled%20worker." class="rounded-md border border-slate-300 px-3 py-2 hover:bg-slate-100">WhatsApp</a>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold">FAQ</h3>
+          <div class="mt-3 space-y-3 text-sm text-slate-700">
+            <p><span class="font-semibold">How do I get listed?</span><br />Use the List Your Service form and wait for admin review.</p>
+            <p><span class="font-semibold">Is it free?</span><br />Yes, listing is free during launch.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="mt-10 border-t border-brand-100 bg-white">
+    <div class="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-8 text-sm text-slate-600 md:flex-row md:items-center md:justify-between">
+      <p>© 2026 FixIt Lusaka</p>
+      <div class="flex flex-wrap gap-4">
+        <a href="#top" class="hover:text-brand-700">Home</a>
+        <a href="#featured" class="hover:text-brand-700">Featured</a>
+        <a href="#workers" class="hover:text-brand-700">All Workers</a>
+        <a href="#list-service" class="hover:text-brand-700">List Service</a>
+      </div>
+      <p>We connect you to workers; always confirm details before hiring.</p>
+    </div>
+  </footer>
+
+  <!-- Replace WhatsApp number below with your support number if needed -->
+  <a href="https://wa.me/260773003518?text=Hi%20FixIt%20Lusaka,%20I%27m%20looking%20for%20a%20skilled%20worker." class="fixed bottom-5 right-5 rounded-full bg-emerald-600 px-4 py-3 text-xs font-bold text-white shadow-lg hover:bg-emerald-700" aria-label="Chat on WhatsApp">
+    WhatsApp Help
+  </a>
+
+  <script src="./app.js"></script>
+</body>
+</html>
