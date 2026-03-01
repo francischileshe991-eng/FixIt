@@ -1,11 +1,11 @@
-﻿# FixIt Lusaka MVP
+﻿# HandyHub ZM MVP
 
-FixIt Lusaka is a simple public directory for trusted skilled workers in Lusaka, Zambia.
+HandyHub ZM is a simple public directory for trusted skilled workers in Lusaka, Zambia.
 
 ## Non-Technical Overview
-FixIt Lusaka helps customers quickly find local workers and contact them directly.
+HandyHub ZM helps customers quickly find local workers and contact them directly.
 
-- Customers search for plumbers, electricians, carpenters, and welders.
+- Customers search for plumbers, electricians, carpenters, welders, and bricklayers/builders.
 - They filter by name, trade, area, or service type.
 - They contact workers directly via WhatsApp or phone.
 - Workers submit listing requests through a form.
@@ -58,7 +58,7 @@ Each worker object includes:
 
 - `id` (string)
 - `name` (string)
-- `trade` (`Plumber` | `Electrician` | `Carpenter` | `Welder`)
+- `trade` (`Plumber` | `Electrician` | `Carpenter` | `Welder` | `Bricklayer/Builder`)
 - `area` (string)
 - `phone` (string, local format)
 - `whatsapp` (string, international digits only)
@@ -98,4 +98,5 @@ Then open `http://localhost:5500`.
 3. Site updates go live after deploy completes.
 
 ## Quick Collaborator Pitch
-"FixIt Lusaka is a static, moderated local worker directory. Worker submissions come through Formspree. Admin verifies submissions, then approved listings are added to a JSON file which the frontend renders automatically."
+"HandyHub ZM is a static, moderated local worker directory. Worker submissions come through Formspree. Admin verifies submissions, then approved listings are added to a JSON file which the frontend renders automatically."
+

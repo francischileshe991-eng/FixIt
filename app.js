@@ -1,4 +1,4 @@
-﻿// FixIt Lusaka frontend app
+﻿// HandyHub ZM frontend app
 // Loads worker data from workers.json and renders cards with live filtering.
 
 (function () {
@@ -64,7 +64,7 @@
       ? '<span class="rounded-full bg-emerald-100 px-2 py-1 text-xs font-semibold text-emerald-700">Verified</span>'
       : '';
 
-    const waMessage = encodeURIComponent(`Hi, I found you on FixIt Lusaka. I need a ${worker.trade} in ${worker.area}.`);
+    const waMessage = encodeURIComponent(`Hi, I found you on HandyHub ZM. I need a ${worker.trade} in ${worker.area}.`);
 
     return `
       <article class="rounded-xl border border-brand-100 bg-white p-5 shadow-sm">
@@ -189,3 +189,4 @@
 
   loadWorkers();
 })();
+
