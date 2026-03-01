@@ -2,11 +2,14 @@
 // Loads worker data from workers.json and renders cards with live filtering.
 
 (function () {
+  const urlParams = new URLSearchParams(window.location.search);
+  const initialTrade = (urlParams.get('trade') || '').trim();
+
   const state = {
     workers: [],
-    query: '',
+    query: (urlParams.get('q') || '').trim().toLowerCase(),
     trade: 'all',
-    area: 'all'
+    area: (urlParams.get('area') || 'all').trim()
   };
 
   const menuBtn = document.getElementById('menuBtn');
@@ -130,6 +133,19 @@
 
       state.workers = data;
       populateAreaFilter(data);
+      const availableTrades = new Set(tradeFilters.map((btn) => btn.dataset.trade));
+      if (availableTrades.has(initialTrade)) {
+        state.trade = initialTrade;
+      }
+
+      const availableAreas = new Set(data.map((worker) => worker.area));
+      if (state.area !== 'all' && !availableAreas.has(state.area)) {
+        state.area = 'all';
+      }
+
+      searchInput.value = state.query;
+      areaFilter.value = state.area;
+      setActiveTradeButton(state.trade);
       render();
     } catch (error) {
       workerCount.textContent = 'Unable to load workers data. Please run via a static server.';
