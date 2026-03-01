@@ -10,6 +10,8 @@
   <meta property="og:description" content="A simple public directory for trusted skilled workers in Lusaka, Zambia." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80" />
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
+  <link rel="shortcut icon" href="./assets/favicon.svg" />
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -34,7 +36,10 @@
 <body class="bg-brand-50 text-slate-800 antialiased">
   <header class="sticky top-0 z-50 border-b border-brand-100 bg-white/95 backdrop-blur">
     <nav class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3" aria-label="Main navigation">
-      <a href="#top" class="text-xl font-bold text-brand-900">HandyHub ZM</a>
+      <a href="#top" class="inline-flex items-center gap-2 text-brand-900" aria-label="HandyHub ZM home">
+        <img src="./assets/logo-mark.svg" alt="" class="h-9 w-9 rounded-lg" />
+        <span class="text-xl font-extrabold tracking-tight">HandyHub ZM</span>
+      </a>
 
       <button id="menuBtn" class="rounded-md border border-brand-100 px-3 py-2 text-sm md:hidden" aria-label="Toggle menu" aria-expanded="false">
         Menu
