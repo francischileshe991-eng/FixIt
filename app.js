@@ -54,6 +54,7 @@
     if (trade === 'Plumber') return 'bg-sky-100 text-sky-800';
     if (trade === 'Electrician') return 'bg-yellow-100 text-yellow-800';
     if (trade === 'Carpenter') return 'bg-orange-100 text-orange-800';
+    if (trade === 'Bricklayer/Builder') return 'bg-stone-200 text-stone-800';
     return 'bg-zinc-200 text-zinc-800';
   }
 
