@@ -14,6 +14,8 @@
 
   const menuBtn = document.getElementById('menuBtn');
   const mobileMenu = document.getElementById('mobileMenu');
+  const menuBackdrop = document.getElementById('menuBackdrop');
+  const navContainer = menuBtn ? menuBtn.closest('nav') : null;
   const searchInput = document.getElementById('searchInput');
   const areaFilter = document.getElementById('areaFilter');
   const tradeFilters = [...document.querySelectorAll('.trade-filter')];
@@ -25,11 +27,54 @@
   const allEmpty = document.getElementById('allEmpty');
   const workerCount = document.getElementById('workerCount');
 
+  function isMobileViewport() {
+    return window.innerWidth < 768;
+  }
+
+  function openMobileMenu() {
+    if (!menuBtn || !navContainer || !menuBackdrop) return;
+    navContainer.classList.add('menu-open');
+    menuBackdrop.hidden = false;
+    requestAnimationFrame(() => {
+      menuBackdrop.classList.add('is-visible');
+    });
+    menuBtn.setAttribute('aria-expanded', 'true');
+  }
+
+  function closeMobileMenu() {
+    if (!menuBtn || !navContainer || !menuBackdrop) return;
+    navContainer.classList.remove('menu-open');
+    menuBackdrop.classList.remove('is-visible');
+    menuBtn.setAttribute('aria-expanded', 'false');
+    window.setTimeout(() => {
+      if (!navContainer.classList.contains('menu-open')) {
+        menuBackdrop.hidden = true;
+      }
+    }, 210);
+  }
+
   if (menuBtn) {
     menuBtn.addEventListener('click', () => {
-      const isHidden = mobileMenu.classList.contains('hidden');
-      mobileMenu.classList.toggle('hidden');
-      menuBtn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+      if (!isMobileViewport()) return;
+      const isOpen = navContainer.classList.contains('menu-open');
+      if (isOpen) closeMobileMenu();
+      else openMobileMenu();
+    });
+
+    mobileMenu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        if (isMobileViewport()) closeMobileMenu();
+      });
+    });
+
+    menuBackdrop.addEventListener('click', closeMobileMenu);
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeMobileMenu();
+    });
+
+    window.addEventListener('resize', () => {
+      if (!isMobileViewport()) closeMobileMenu();
     });
   }
 

@@ -32,32 +32,164 @@
       }
     };
   </script>
+  <style>
+    .nav-shell {
+      position: relative;
+    }
+
+    .menu-btn {
+      border: 1px solid #efe6d8;
+      background: #fff;
+      color: #4f3116;
+      border-radius: 0.75rem;
+      padding: 0.5rem 0.85rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+    }
+
+    .mobile-menu {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: calc(100% + 0.5rem);
+      background: #fff;
+      border: 1px solid #efe6d8;
+      border-radius: 1rem;
+      box-shadow: 0 16px 32px rgba(23, 15, 7, 0.16);
+      padding: 0.7rem;
+      opacity: 0;
+      transform: translateY(-10px);
+      pointer-events: none;
+      transition: opacity 200ms ease, transform 200ms ease;
+      z-index: 60;
+    }
+
+    .menu-links {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.45rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .menu-link {
+      display: block;
+      border-radius: 0.65rem;
+      padding: 0.55rem 0.7rem;
+      color: #2f2a24;
+      text-decoration: none;
+    }
+
+    .menu-link:hover {
+      background: #f7f4ef;
+      color: #9b5f2b;
+    }
+
+    .menu-link.cta {
+      grid-column: 1 / -1;
+      text-align: center;
+      background: #d08b47;
+      color: #fff;
+    }
+
+    .menu-link.cta:hover {
+      background: #9b5f2b;
+      color: #fff;
+    }
+
+    .menu-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(34, 24, 13, 0.38);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 200ms ease;
+      z-index: 45;
+    }
+
+    .menu-backdrop.is-visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .nav-shell.menu-open .mobile-menu {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    @media (min-width: 768px) {
+      .menu-btn {
+        display: none;
+      }
+
+      .mobile-menu {
+        position: static;
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+        border: 0;
+        box-shadow: none;
+        padding: 0;
+        background: transparent;
+      }
+
+      .menu-links {
+        display: flex;
+        align-items: center;
+        gap: 1.35rem;
+      }
+
+      .menu-link {
+        padding: 0;
+      }
+
+      .menu-link:hover {
+        background: transparent;
+      }
+
+      .menu-link.cta {
+        display: inline-block;
+        border-radius: 0.45rem;
+        padding: 0.5rem 1rem;
+      }
+
+      .menu-backdrop {
+        display: none;
+      }
+    }
+  </style>
 </head>
 <body class="bg-brand-50 text-slate-800 antialiased">
   <header class="sticky top-0 z-50 border-b border-brand-100 bg-white/95 backdrop-blur">
-    <nav class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3" aria-label="Main navigation">
+    <nav class="nav-shell mx-auto flex max-w-7xl items-center justify-between px-4 py-3" aria-label="Main navigation">
       <a href="#top" class="inline-flex items-center text-brand-900" aria-label="HandyHub ZM home">
         <img src="./assets/brand/handyhub-logo-wordmark.svg" alt="HandyHub ZM" class="h-10 w-auto" />
       </a>
 
-      <button id="menuBtn" class="rounded-md border border-brand-100 px-3 py-2 text-sm md:hidden" aria-label="Toggle menu" aria-expanded="false">
+      <button id="menuBtn" class="menu-btn" aria-label="Toggle menu" aria-controls="mobileMenu" aria-expanded="false">
         Menu
       </button>
 
-      <div id="mobileMenu" class="hidden w-full pt-3 md:block md:w-auto md:pt-0">
-        <ul class="flex flex-col gap-2 text-sm font-medium md:flex-row md:items-center md:gap-6">
-          <li><a href="#top" class="hover:text-brand-700">Home</a></li>
-          <li><a href="#featured" class="hover:text-brand-700">Featured</a></li>
-          <li><a href="#workers" class="hover:text-brand-700">All Workers</a></li>
-          <li><a href="#list-service" class="hover:text-brand-700">List Service</a></li>
-          <li><a href="#contact" class="hover:text-brand-700">Contact</a></li>
+      <div id="mobileMenu" class="mobile-menu">
+        <ul class="menu-links">
+          <li><a href="#top" class="menu-link">Home</a></li>
+          <li><a href="#featured" class="menu-link">Featured</a></li>
+          <li><a href="#workers" class="menu-link">All Workers</a></li>
+          <li><a href="#list-service" class="menu-link">List Service</a></li>
+          <li><a href="#contact" class="menu-link">Contact</a></li>
           <li>
-            <a href="#list-service" class="inline-block rounded-md bg-brand-500 px-4 py-2 text-white hover:bg-brand-700">List Your Service</a>
+            <a href="#list-service" class="menu-link cta">List Your Service</a>
           </li>
         </ul>
       </div>
     </nav>
   </header>
+  <div id="menuBackdrop" class="menu-backdrop" hidden></div>
 
   <main id="top">
     <section class="mx-auto max-w-7xl px-4 py-16 sm:py-20">
